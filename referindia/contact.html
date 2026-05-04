@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="preload" as="image" href="./img/logo.jpg">
+    <link rel="preload" as="style" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/performance.css">
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <header class="navbar" id="navbar">
+        <div class="container nav-container"><a href="index.html" class="logo"><span><img src="./img/logo.jpg"
+                        alt=""></span></a><button class="mobile-toggle" id="mobileToggle"><i
+                    class="fas fa-bars"></i></button>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+                <div class="nav-cta"><a href="contact.html" class="btn-neon">Start project</a></div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="page-header-3d">
+            <div class="container">
+                <h1>Let's create <span class="gradient-3d">something bold</span></h1>
+                <p>We're one message away from starting your next journey.</p>
+            </div>
+        </section>
+        <section class="contact-3d">
+            <div class="container contact-grid-3d">
+                <div class="contact-form-wrapper">
+                    <div class="contact-form-card">
+                        <div class="form-header">
+                            <h2>Get in Touch</h2>
+                            <p>Send us a message and we'll respond as soon as possible</p>
+                        </div>
+                        <form id="contactForm3d" class="contact-form">
+                            <div class="form-group">
+                                <label for="contactName">Full Name</label>
+                                <input type="text" id="contactName" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email Address</label>
+                                <input type="email" id="contactEmail" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMessage">Message</label>
+                                <textarea id="contactMessage" rows="5" placeholder="Tell us about your vision..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit-form">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                            <div class="form-feedback" id="formFeedback"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="office-locations-3d">
+            <div class="container">
+                <div class="section-header-locations">
+                    <h2 class="section-title">Our <span class="highlight-blue">Office Locations</span></h2>
+                    <p class="section-subtitle">Find us across India, Middle East, and Europe</p>
+                </div>
+
+                <div class="locations-grid">
+                    <!-- INDIA OFFICE -->
+                    <div class="location-card">
+                        <div class="location-card-header">
+                            <i class="fas fa-map-marker-alt location-icon"></i>
+                            <h3>India</h3>
+                        </div>
+                        <div class="location-card-content">
+                            <div class="location-address">
+                                <p>11/1908, Sunteck MAXXWorld, Naigaon East Vasai Link Rd, Tivri,<br>Naigaon East,
+                                    Mumbai, Maharashtra – 401208</p>
+                            </div>
+                            <div class="location-contact">
+                                <a href="tel:+971970205375" class="location-link">
+                                    <i class="fas fa-phone"></i> +971 9702053758
+                                </a>
+                            </div>
+                            <div class="location-contact">
+                                <a href="mailto:care@referindia.in" class="location-link">
+                                    <i class="fas fa-envelope"></i> care@referindia.in
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MIDDLE EAST OFFICE -->
+                    <div class="location-card">
+                        <div class="location-card-header">
+                            <i class="fas fa-map-marker-alt location-icon"></i>
+                            <h3>Middle East</h3>
+                        </div>
+                        <div class="location-card-content">
+                            <div class="location-address">
+                                <p>Al Karama, Dubai, UAE</p>
+                            </div>
+                            <div class="location-contact">
+                                <a href="tel:+971555286876" class="location-link">
+                                    <i class="fas fa-phone"></i> +971 555286876
+                                </a>
+                            </div>
+                            <div class="location-contact">
+                                <a href="mailto:team@refermiddleeast.ae" class="location-link">
+                                    <i class="fas fa-envelope"></i> team@refermiddleeast.ae
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EUROPE OFFICE -->
+                    <div class="location-card">
+                        <div class="location-card-header">
+                            <i class="fas fa-map-marker-alt location-icon"></i>
+                            <h3>Europe</h3>
+                        </div>
+                        <div class="location-card-content">
+                            <div class="location-address">
+                                <p>Tarazona, Zaragoza, Spain</p>
+                            </div>
+                            <div class="location-contact">
+                                <a href="mailto:contact@refer-europe.com" class="location-link">
+                                    <i class="fas fa-envelope"></i> contact@refer-europe.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+     <footer class="footer-premium">
+    <div class="container footer-grid-3d">
+      <div class="footer-brand">
+        <span><img src="./img/logo.jpg" alt=""></span>
+        <p>Redefining digital frontiers through 3D storytelling.</p>
+        <div class="social-links"><i class="fab fa-instagram"></i><i class="fab fa-facebook-f"></i><i class="fab fa-linkedin-in"></i></div>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Work</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="#">Careers</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 REFERINDIA GLOBAL — All rights reserved.</p></div>
+  </footer>
+    <button id="backToTop" class="back-to-top-3d"><i class="fas fa-arrow-up"></i></button>
+    <script async src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
+    <script defer src="js/script.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+/* =====================================================
+   PERFORMANCE OPTIMIZATIONS
+   ===================================================== */
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hardware acceleration for animations */
+.hero-cinematic,
+.feature-card-3d,
+.service-tilt,
+.stat-card,
+.portfolio-card,
+.btn-primary-3d,
+.btn-neon,
+.scroll-hint {
+  will-change: transform;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Improve font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Optimize images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Lazy loading support */
+[loading="lazy"] {
+  background-color: #f0f0f0;
+}
+
+/* Optimize hover states */
+@media (hover: hover) {
+  button:hover,
+  a:hover {
+    transition: all 0.3s ease;
+  }
+}
+
+/* Disable hover on touch devices */
+@media (hover: none) {
+  button:active,
+  a:active {
+    opacity: 0.8;
+  }
+}
+
+/* CSS Grid optimization */
+@supports (display: grid) {
+  .features-grid-3d,
+  .services-grid-tilt,
+  .stats-grid,
+  .portfolio-masonry {
+    display: grid;
+  }
+}
+
+/* Flexbox as fallback */
+@supports not (display: grid) {
+  .features-grid-3d,
+  .services-grid-tilt,
+  .stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+/* Optimize backdrop filter performance */
+@supports (backdrop-filter: blur(1px)) {
+  .navbar,
+  .feature-card-3d,
+  .stat-card,
+  .footer-premium {
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Fallback for backdrop filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .navbar,
+  .feature-card-3d,
+  .stat-card,
+  .footer-premium {
+    background-color: rgba(10, 15, 31, 0.95);
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .navbar,
+  .loading-screen,
+  .scroll-hint,
+  .back-to-top-3d {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+/* Dark mode preferences (optional enhancement) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--black);
+    color: #ededed;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  body {
+    --neon-blue: #0080ff;
+    --neon-purple: #7700ff;
+  }
+}
+
+/* Reduced motion animation */
+.fade-in-scroll {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
