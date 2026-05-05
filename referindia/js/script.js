@@ -26,13 +26,51 @@ const toggle = document.getElementById('mobileToggle');
 const menu = document.getElementById('navMenu');
 if (toggle) toggle.addEventListener('click', () => menu.classList.toggle('active'));
 
-// Smooth Scroll (native with Lenis-style feel)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+// Navbar Click Animation + Active Link Handling
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const setActiveNavLink = (activeLink) => {
+    navLinks.forEach(link => link.classList.remove('active')); 
+    if (activeLink) activeLink.classList.add('active');
+};
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        link.classList.add('active');
+        link.classList.add('nav-link-clicked');
+        setTimeout(() => link.classList.remove('nav-link-clicked'), 220);
+        if (menu && menu.classList.contains('active')) {
+            menu.classList.remove('active');
+        }
     });
 });
+
+// Smooth Scroll for anchor links inside page
+const pageAnchors = document.querySelectorAll('a[href^="#"]');
+pageAnchors.forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const matchingNav = document.querySelector(`.nav-links a[href="${this.getAttribute('href')}"]`);
+            if (matchingNav) setActiveNavLink(matchingNav);
+        }
+    });
+});
+
+// Scroll spy for in-page sections
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const sectionId = entry.target.id;
+        const matchingNav = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+        if (matchingNav) {
+            if (entry.isIntersecting) setActiveNavLink(matchingNav);
+        }
+    });
+}, { threshold: 0.45 });
+
+document.querySelectorAll('section[id]').forEach(section => sectionObserver.observe(section));
 
 // Parallax Scroll Layers (data-speed)
 window.addEventListener('scroll', () => {
@@ -88,7 +126,15 @@ if (counters.length) {
 
 // Back to Top
 const backBtn = document.getElementById('backToTop');
-window.addEventListener('scroll', () => { if (backBtn) backBtn.style.display = window.scrollY > 500 ? 'flex' : 'none'; });
+window.addEventListener('scroll', () => { 
+    if (backBtn) {
+        if (window.scrollY > 500) {
+            backBtn.classList.add('visible');
+        } else {
+            backBtn.classList.remove('visible');
+        }
+    } 
+});
 if (backBtn) backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 // ===== PORTFOLIO MODAL SYSTEM (Event Delegation) =====
