@@ -392,9 +392,11 @@ body {
    ===================================================== */
 
 .hero-cinematic {
-  height: 100vh;
+  min-height: 100vh; /* Changed from height to min-height */
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-video-container {
@@ -409,6 +411,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.6; /* Reduced opacity for better text readability */
 }
 
 .hero-overlay {
@@ -417,7 +420,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 40%, rgba(0, 0, 0, 0.2), #03050a 85%);
+  background: radial-gradient(circle at 20% 40%, rgba(0, 0, 0, 0.4), #03050a 90%); /* Darkened for contrast */
 }
 
 .hero-shape-1 {
@@ -448,8 +451,8 @@ body {
   z-index: 3;
   display: flex;
   align-items: center;
-  height: 90%;
-  /* border: 2px solid red; */
+  flex: 1;
+  padding: 60px 0 80px; /* Reduced padding to fix excessive top gap */
 }
 
 .hero-inner {
@@ -480,7 +483,7 @@ body {
 }
 
 .hero-title {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 6vw, 5rem); /* Fluid typography */
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 24px;
@@ -2052,9 +2055,11 @@ body {
     padding: 0 32px;
   }
 
-  .hero-title {
-    font-size: 3.5rem;
+  .hero-content {
+    padding-top: 60px; /* Normalized top spacing */
   }
+
+  /* Hero title now handled by clamp() */
 
   .section-title-3d {
     font-size: 2.5rem;
@@ -2146,9 +2151,11 @@ body {
     justify-content: center;
   }
 
-  .hero-title {
-    font-size: 2.5rem;
+  .hero-content {
+    padding-top: 50px; /* Reduced padding to eliminate extra gap on mobile */
   }
+
+  /* Hero title now handled by clamp() */
 
   .hero-description {
     max-width: 100%;
