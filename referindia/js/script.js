@@ -16,9 +16,22 @@ document.addEventListener('mousemove', (e) => {
     if (dot) dot.style.transform = `translate(${e.clientX - 2.5}px, ${e.clientY - 2.5}px)`;
     if (ring) ring.style.transform = `translate(${e.clientX - 18}px, ${e.clientY - 18}px)`;
 });
-document.querySelectorAll('a, button, .feature-card-3d, .service-tilt, .portfolio-card').forEach(el => {
-    el.addEventListener('mouseenter', () => { if (ring) ring.style.width = '52px'; ring.style.height = '52px'; });
-    el.addEventListener('mouseleave', () => { if (ring) ring.style.width = '36px'; ring.style.height = '36px'; });
+// Refactored Cursor Hover Logic (Event Delegation for Modals/Dynamic Content)
+window.addEventListener('mouseover', (e) => {
+    const isClickable = e.target.closest('a, button, .feature-card-3d, .service-tilt, .portfolio-card, .close-modal, [role="button"]');
+    if (ring) {
+        if (isClickable) {
+            ring.style.width = '52px';
+            ring.style.height = '52px';
+            ring.style.borderColor = 'rgba(0, 166, 255, 1)';
+            ring.style.background = 'rgba(0, 166, 255, 0.05)';
+        } else {
+            ring.style.width = '36px';
+            ring.style.height = '36px';
+            ring.style.borderColor = 'rgba(0, 166, 255, 0.6)';
+            ring.style.background = 'transparent';
+        }
+    }
 });
 
 // Mobile Menu
@@ -141,7 +154,8 @@ if (backBtn) backBtn.addEventListener('click', () => window.scrollTo({ top: 0, b
 const projects = {
   1: {
     title: "ePrescribe – AI-powered clinic & hospital management software",
-    description: "An advanced AI-driven healthcare platform designed to streamline clinic and hospital operations. ePrescribe helps doctors and medical staff manage patient records, digital prescriptions, appointments, and treatment history in one secure system. It reduces manual paperwork, improves accuracy in prescriptions, and enhances overall patient care efficiency through smart automation and AI assistance."
+    description: "An advanced AI-driven healthcare platform designed to streamline clinic and hospital operations. ePrescribe helps doctors and medical staff manage patient records, digital prescriptions, appointments, and treatment history in one secure system. It reduces manual paperwork, improves accuracy in prescriptions, and enhances overall patient care efficiency through smart automation and AI assistance.",
+    link: "https://referindia.in/eprescribe"
   },
   2: {
     title: "Smart AI parking solution for societies & corporates",
@@ -161,7 +175,8 @@ const projects = {
 },
 6:{
     title:"Smart NFC card management software",
-    description:"eCards is a next-generation NFC-based smart card system for digital identity, access control, and business networking. Users can share information instantly by tapping their NFC card on a smartphone. It is ideal for corporate ID cards, business cards, event passes, and secure access systems, offering a fully digital and contactless experience."
+    description:"eCards is a next-generation NFC-based smart card system for digital identity, access control, and business networking. Users can share information instantly by tapping their NFC card on a smartphone. It is ideal for corporate ID cards, business cards, event passes, and secure access systems, offering a fully digital and contactless experience.",
+    link: "https://referindia.in/ecards"
 }
 };
 
@@ -190,9 +205,18 @@ function openProjectModal(projectId) {
   // Update modal content dynamically using modal-specific selectors
   const titleElement = projectModal.querySelector('h2');
   const descriptionElement = projectModal.querySelector('p');
+  const linkElement = projectModal.querySelector('.modal-link');
 
   if (titleElement) titleElement.textContent = project.title;
   if (descriptionElement) descriptionElement.textContent = project.description;
+  if (linkElement) {
+    if (project.link) {
+      linkElement.href = project.link;
+      linkElement.style.display = 'inline-flex';
+    } else {
+      linkElement.style.display = 'none';
+    }
+  }
 
   // Show modal with animation
   projectModal.classList.add('active');
@@ -208,21 +232,19 @@ function closeProjectModal() {
   document.body.style.overflow = 'auto';
 }
 
-// Event Delegation: Single listener on portfolio-masonry
-if (portfolioMasonry) {
-  portfolioMasonry.addEventListener('click', (e) => {
-    // Find closest parent .portfolio-card from click target
-    const card = e.target.closest('.portfolio-card');
-    
-    if (card) {
-      const projectId = card.getAttribute('data-project');
-      console.log('Clicked portfolio card project id:', projectId);
-      if (projectId) {
-        openProjectModal(projectId);
-      }
-    }
-  });
-}
+// Portfolio Card Listeners
+const portfolioCards = document.querySelectorAll('.portfolio-card');
+portfolioCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+        // Independent check: Only open modal if "View Case Study" trigger is clicked
+        const isTrigger = e.target.closest('.portfolio-button') || e.target.closest('.portfolio-overlay') || e.target.closest('.btn-card-link');
+        
+        if (isTrigger) {
+            const projectId = card.getAttribute('data-project');
+            if (projectId) openProjectModal(projectId);
+        }
+    });
+});
 
 // Close Button Handler
 if (closeModalBtn) {
