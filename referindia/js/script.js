@@ -290,7 +290,78 @@ window.addEventListener('scroll', () => {
     if (window.scrollY > 50) navbar.style.background = 'rgba(3,5,10,0.98)';
     else navbar.style.background = 'rgba(3,5,10,0.85)';
 });
-document.getElementById('heroVideo')?.play();
+// =====================================================
+// HERO VIDEO — Robust Initialization
+// =====================================================
+//
+// Common reasons a video source fails:
+//   1. The URL is a webpage (e.g. pexels.com/video/123), not a direct .mp4 file.
+//      Webpages return MIME type text/html — the <video> tag refuses to play them.
+//   2. The CDN blocks cross-origin hotlinking (403 Forbidden).
+//   3. CORS headers are missing, so the browser rejects the response.
+//   4. The URL is a redirect — <video> doesn't reliably follow 301/302 redirects.
+//
+// SOLUTION: Always use a direct .mp4 URL.
+//   Test it: paste the URL in a new browser tab — if it plays/downloads, it'll work here.
+//   Pexels direct URL format: https://videos.pexels.com/video-files/XXXX/XXXX-hd...mp4
+//
+(function initSeamlessVideoLoop() {
+  const v1 = document.getElementById('heroVideo');
+  const v2 = document.getElementById('heroVideoNext');
+  if (!v1 || !v2) return;
+
+  const transitionTime = 2; // Seconds before end to start fade (matches CSS transition)
+  let activeVideo = v1;
+  let nextVideo = v2;
+
+  function crossFade() {
+    console.log('[HeroVideo] Starting cross-fade...');
+    
+    // Prepare next video
+    nextVideo.currentTime = 0;
+    nextVideo.play().then(() => {
+      // Swap classes to trigger CSS transition
+      activeVideo.classList.remove('active');
+      nextVideo.classList.add('active');
+
+      // Swap roles for next loop
+      [activeVideo, nextVideo] = [nextVideo, activeVideo];
+    }).catch(err => {
+      console.warn('[HeroVideo] Cross-fade failed:', err);
+      // Fallback: just restart current video
+      activeVideo.currentTime = 0;
+      activeVideo.play().catch(() => {});
+    });
+  }
+
+  function monitorVideo() {
+    // Check if we are close to the end
+    if (activeVideo.currentTime > activeVideo.duration - transitionTime && !nextVideo.playing) {
+      nextVideo.playing = true; // Guard flag
+      crossFade();
+      
+      // Reset guard flag after transition
+      setTimeout(() => {
+        nextVideo.playing = false;
+      }, transitionTime * 1000 + 500);
+    }
+    requestAnimationFrame(monitorVideo);
+  }
+
+  // Handle initial play
+  v1.muted = v2.muted = true;
+  v1.play().then(() => {
+    console.log('[HeroVideo] Initial video playing.');
+    requestAnimationFrame(monitorVideo);
+  }).catch(() => {
+    // Autoplay blocked
+    const resume = () => {
+      v1.play().then(() => requestAnimationFrame(monitorVideo));
+      ['click', 'touchstart'].forEach(ev => document.removeEventListener(ev, resume));
+    };
+    ['click', 'touchstart'].forEach(ev => document.addEventListener(ev, resume, { once: true }));
+  });
+})();
 
 // Hero text fade-in animation on load
 document.querySelectorAll('.hero-title, .hero-description, .hero-buttons, .hero-badge').forEach((el, idx) => {

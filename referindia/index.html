@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>REFERINDIA GLOBAL</title>
-  <meta name="description" content="Award-winning digital studio. Immersive 3D scroll effects, cinematic video hero, and futuristic design.">
-  
+  <meta name="description"
+    content="Award-winning digital studio. Immersive 3D scroll effects, cinematic video hero, and futuristic design.">
+
   <!-- Preload critical resources for faster loading -->
   <link rel="preload" as="image" href="./img/logo.jpg">
   <link rel="preload" as="style" href="css/style.css">
-  
+
   <!-- DNS prefetch for external resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  
+
   <!-- Optimized Fonts with font-display: swap for better rendering -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+    rel="stylesheet">
+
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    crossorigin="anonymous">
+
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-  
+
   <!-- Performance optimizations -->
   <link rel="stylesheet" href="css/performance.css">
 </head>
+
 <body>
 
   <!-- Custom Cursor -->
@@ -38,7 +44,9 @@
     <div class="loading-container">
       <div class="loading-spinner"></div>
       <!-- <div class="loading-text">REFERINDIA GLOBAL<span class="dot-pulse">.</span></div> -->
-      <div class="loading-bar"><div class="loading-progress"></div></div>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
     </div>
   </div>
 
@@ -66,116 +74,173 @@
   <main>
     <!-- Hero Section: Fullscreen Video Background -->
     <section class="hero-cinematic" id="hero">
+      <!-- Background Video -->
       <div class="hero-video-container">
-        <video autoplay muted loop playsinline id="heroVideo">
-          <source src="https://www.pexels.com/download/video/20548607/" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
+        <div class="hero-video-wrapper">
+          <video id="heroVideo" class="hero-bg-video active" autoplay muted playsinline preload="auto"
+            poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+            crossorigin="anonymous">
+            <source src="https://cdn.pixabay.com/video/2023/04/15/158968-818026239_large.mp4" type="video/mp4">
+            <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4">
+          </video>
+          <video id="heroVideoNext" class="hero-bg-video" muted playsinline preload="auto" crossorigin="anonymous">
+            <source src="https://cdn.pixabay.com/video/2023/04/15/158968-818026239_large.mp4" type="video/mp4">
+            <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
-      
-      <!-- Floating parallax shapes for depth -->
-      <div class="hero-shape-1" data-speed="0.2"></div>
-      <div class="hero-shape-2" data-speed="-0.1"></div>
-      
-      <div class="hero-content" data-speed="0.15">
-        <div class="container hero-inner">
+
+      <div class="container hero-container-split">
+        <div class="hero-content-left">
           <div class="hero-badge">
-            <span class="badge-glow"></span>
-            Empowering businesses with scalable, affordable technology to grow globally.
+            <span class="badge-dot"></span>
+            Global Tech Expansion 2026
           </div>
           <h1 class="hero-title">
-            From Local <span class="gradient-3d">Roots</span><br>
+            From Local <span class="gradient-text">Roots</span><br>
             to Global Growth
           </h1>
-          <p class="hero-description">
-            At ReferIndia, we empower businesses with smart, scalable, and future-ready technology solutions designed to drive real growth.From supporting startups in India to expanding across Europe and the Middle East, our journey is built on innovation, trust, and delivering measurable results.We don’t just build software — we build long-term partnerships that help businesses grow faster, operate smarter, and compete globally.
+          <p class="hero-description text-balance">
+            At ReferIndia, we empower businesses with smart, scalable, and future-ready technology solutions. We don’t
+            just build software — we build long-term partnerships that help businesses grow faster, operate smarter, and
+            compete globally.
           </p>
-          <p class="hero-description">Trusted by 250+ clients across multiple industries</p>
           <div class="hero-buttons">
-            <a href="#work" class="btn-primary-3d">Explore universe <i class="fas fa-arrow-down"></i></a>
-            <a href="contact.html" class="btn-outline-3d">Let's talk</a>
+            <a href="#work" class="btn-primary-platinum">Explore Universe <i class="fas fa-arrow-right"></i></a>
+            <a href="contact.html" class="btn-outline-platinum">Start Project</a>
+          </div>
+          <div class="hero-trust">
+            <p>Trusted by world-class teams</p>
+            <div class="trust-logos">
+              <i class="fab fa-google"></i>
+              <i class="fab fa-microsoft"></i>
+              <i class="fab fa-aws"></i>
+              <i class="fab fa-digital-ocean"></i>
+            </div>
           </div>
         </div>
+
+        <div class="hero-visual-right">
+          <div class="visual-card-premium">
+            <div class="card-header">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
+            <div class="card-body">
+              <div class="skeleton-line long"></div>
+              <div class="skeleton-line short"></div>
+              <div class="skeleton-grid">
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+              </div>
+            </div>
+            <div class="card-glow-effect"></div>
+          </div>
+          <div class="floating-orb-visual"></div>
+        </div>
       </div>
-      
-      <div class="scroll-hint">
-        <!-- <span>Scroll to experience 3D depth</span> -->
-        <i class="fas fa-chevron-down"></i>
+
+      <div class="scroll-hint-platinum">
+        <div class="mouse-icon">
+          <div class="wheel"></div>
+        </div>
       </div>
     </section>
 
-    <!-- 3D Features Section with Parallax Cards -->
-    <section class="features-3d" id="work">
+
+    <section class="timeline-section" id="work">
+
       <div class="container">
+
         <div class="section-tag">✦ A journey driven by innovation, growth, and expanding global impact. ✦</div>
         <h2 class="section-title-3d">Our Growth<span class="neon-highlight"> Journey</span></h2>
-        
-        <div class="features-grid-3d">
-          <div class="feature-card-3d" data-tilt data-tilt-max="10">
-            <div class="card-icon"><animated-icons
-  src="https://animatedicons.co/get-icon?name=Small%20Business&style=minimalistic&token=13011e87-65b9-45cb-bd01-958e72e340e8"
-  attributes='{"variationThumbColour":"#536DFE","variationName":"Two Tone","variationNumber":2,"numberOfGroups":2,"backgroundIsGroup":false,"strokeWidth":0.5,"defaultColours":{"group-1":"#000000","group-2":"#536DFE","background":"#FFFFFF"}}'
-  height="100"
-  width="100"
-  autoplay></animated-icons></div>
-            
-            <span>🔴 2020</span>
-            <h3>ReferIndia Started</h3>
-            <p>250+ Active Customers Across India</p>
-            <div class="card-glow"></div>
+
+        <div class="timeline-container">
+          <!-- Central Axis Line -->
+          <div class="timeline-axis">
+            <div class="timeline-progress-line"></div>
+            <div class="timeline-progress-tip"></div>
           </div>
-          <div class="feature-card-3d" data-tilt data-tilt-max="10">
-            <div class="card-icon"><animated-icons
-  src="https://animatedicons.co/get-icon?name=Prices%20Continue%20To%20Rise&style=minimalistic&token=2df62946-b1ae-4b58-b632-08b0eeb19421"
-  attributes='{"variationThumbColour":"#536DFE","variationName":"Two Tone","variationNumber":2,"numberOfGroups":2,"backgroundIsGroup":false,"strokeWidth":0.5,"defaultColours":{"group-1":"#000000","group-2":"#536DFE","background":"#FFFFFF"}}'
-  height="100"
-  width="100"
-></animated-icons></div>
-            <span>🔵 2025</span>
-            <h3>ePrescribe Launched</h3>
-            <p>50+ Clinics & Hospitals Using</p>
-            <div class="card-glow"></div>
-          </div>
-          <div class="feature-card-3d" data-tilt data-tilt-max="10">
-            <div class="card-icon"><animated-icons
-  src="https://animatedicons.co/get-icon?name=Small%20Business&style=minimalistic&token=13011e87-65b9-45cb-bd01-958e72e340e8"
-  attributes='{"variationThumbColour":"#536DFE","variationName":"Two Tone","variationNumber":2,"numberOfGroups":2,"backgroundIsGroup":false,"strokeWidth":0.5,"defaultColours":{"group-1":"#000000","group-2":"#536DFE","background":"#FFFFFF"}}'
-  height="100"
-  width="100"
-  autoplay></animated-icons></div>
-            <span>🔴 2026</span>
-            <h3>ReferEurope Started</h3>
-            <p>5+ Active Clients</p>
-            <div class="card-glow"></div>
-          </div>
-          <div class="feature-card-3d" data-tilt data-tilt-max="10">
-            <div class="card-icon"><animated-icons
-  src="https://animatedicons.co/get-icon?name=Learn%20More&style=minimalistic&token=66a6ba01-4945-4e73-bc94-af7cc8238f9c"
-  attributes='{"variationThumbColour":"#536DFE","variationName":"Two Tone","variationNumber":2,"numberOfGroups":2,"backgroundIsGroup":false,"strokeWidth":0.5,"defaultColours":{"group-1":"#000000","group-2":"#536DFE","background":"#FFFFFF"}}'
-  height="100"
-  width="100"
-></animated-icons></div>
-            <span>🔵 2026</span>
-            <h3>ReferIndia Digital Academy</h3>
-            <p>5+ Active Batches</p>
-            <div class="card-glow"></div>
+
+          <!-- Timeline Items -->
+          <div class="timeline-items">
+            <!-- 2020 -->
+            <div class="timeline-item left" data-tilt>
+              <div class="timeline-dot"></div>
+              <div class="timeline-card glass">
+                <div class="timeline-year">2020</div>
+                <h3>ReferIndia Started</h3>
+                <p>250+ Active Customers Across India. Launching our vision for digital excellence.</p>
+                <div class="card-glow-neon"></div>
+              </div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="timeline-item right" data-tilt>
+              <div class="timeline-dot"></div>
+              <div class="timeline-card glass">
+                <div class="timeline-year">2024</div>
+                <h3>ReferEurope Started</h3>
+                <p>Expanding footprint in the European market with premium technology solutions.</p>
+                <div class="card-glow-neon"></div>
+              </div>
+            </div>
+
+            <!-- 2025 -->
+            <div class="timeline-item left" data-tilt>
+              <div class="timeline-dot"></div>
+              <div class="timeline-card glass">
+                <div class="timeline-year">2025</div>
+                <h3>ePrescribe Launched</h3>
+                <p>50+ Clinics & Hospitals Using the Platform. Revolutionizing healthcare through AI integration.</p>
+                <div class="card-glow-neon"></div>
+              </div>
+            </div>
+
+            <!-- 2026 A -->
+            <div class="timeline-item right" data-tilt>
+              <div class="timeline-dot"></div>
+              <div class="timeline-card glass">
+                <div class="timeline-year">2026</div>
+                <h3>ReferMiddleEast Started</h3>
+                <p>Expanding healthcare technology services into Middle Eastern markets with global scale.</p>
+                <div class="card-glow-neon"></div>
+              </div>
+            </div>
+
+            <!-- 2026 B -->
+            <div class="timeline-item left" data-tilt>
+              <div class="timeline-dot"></div>
+              <div class="timeline-card glass">
+                <div class="timeline-year">2026</div>
+                <h3>Digital Academy</h3>
+                <p>Training the next generation of tech leaders with industry-leading modules.</p>
+                <div class="card-glow-neon"></div>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Sticky 3D Depth Section: Premium Impact Numbers -->
+    <!-- Stable Impact Numbers Section -->
     <section class="impact-numbers" id="depth">
-      <div class="impact-sticky-wrapper">
+      <div class="container">
         <div class="impact-container">
           <!-- LEFT COLUMN: Heading & CTA -->
-          <div class="impact-left" data-speed="0.05">
+          <div class="impact-left">
             <div class="impact-badge">✦ Our Success Metrics ✦</div>
             <h2 class="impact-title">
               Our Impact <span class="gradient-text">in Numbers</span>
             </h2>
             <p class="impact-subtitle">
-              Delivering measurable results through innovation, scale, and trust. With global reach and proven track record, we've built partnerships that drive growth.
+              Delivering measurable results through innovation, scale, and trust. With global reach and proven track
+              record, we've built partnerships that drive growth.
             </p>
             <a href="contact.html" class="btn-impact-cta">
               Explore Our Work <i class="fas fa-arrow-right"></i>
@@ -184,116 +249,103 @@
 
           <!-- RIGHT COLUMN: Stats Grid -->
           <div class="impact-right">
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-              <!-- Stat Card 1 -->
-              <div class="stat-card" data-stat-index="0">
-                <div class="stat-icon stat-icon-1">
-                  <i class="fas fa-users"></i>
-                </div>
-                <div class="stat-content">
-                  <div class="stat-number" data-target="250" data-suffix="+">0</div>
-                  <p class="stat-label">Active Clients</p>
-                </div>
-              </div>
-
-              <!-- Stat Card 2 -->
-              <div class="stat-card" data-stat-index="1">
-                <div class="stat-icon stat-icon-2">
-                  <i class="fas fa-globe"></i>
-                </div>
-                <div class="stat-content">
-                  <div class="stat-number" data-target="3" data-suffix="+">0</div>
-                  <p class="stat-label">Global Regions</p>
+            <!-- Professional Stats Grid -->
+            <div class="stats-grid-premium">
+              <!-- FEATURED: Active Clients -->
+              <div class="stat-card-featured">
+                <div class="stat-inner">
+                  <div class="stat-icon-wrapper">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <div class="stat-main">
+                    <div class="stat-number" data-target="250" data-suffix="+">0</div>
+                    <p class="stat-label">Active Clients Across India</p>
+                  </div>
                 </div>
               </div>
 
-              <!-- Stat Card 3 -->
-              <div class="stat-card" data-stat-index="2">
-                <div class="stat-icon stat-icon-3">
-                  <i class="fas fa-calendar-check"></i>
-                </div>
-                <div class="stat-content">
-                  <div class="stat-number" data-target="5" data-suffix="+">0</div>
-                  <p class="stat-label">Years Experience</p>
-                </div>
-              </div>
-
-              <!-- Stat Card 4 -->
-              <div class="stat-card" data-stat-index="3">
-                <div class="stat-icon stat-icon-4">
-                  <i class="fas fa-hospital"></i>
-                </div>
-                <div class="stat-content">
-                  <div class="stat-number" data-target="50" data-suffix="+">0</div>
-                  <p class="stat-label">Clinics & Hospitals</p>
+              <!-- TALL: Experience -->
+              <div class="stat-card-tall">
+                <div class="stat-inner">
+                  <div class="stat-icon-wrapper">
+                    <i class="fas fa-calendar-check"></i>
+                  </div>
+                  <div class="stat-main">
+                    <div class="stat-number" data-target="5" data-suffix="+">0</div>
+                    <p class="stat-label">Years of Digital<br>Excellence</p>
+                  </div>
                 </div>
               </div>
 
-              <!-- Stat Card 5 -->
-              <div class="stat-card" data-stat-index="4">
-                <div class="stat-icon stat-icon-5">
-                  <i class="fas fa-cube"></i>
-                </div>
-                <div class="stat-content">
-                  <div class="stat-number" data-target="6" data-suffix="+">0</div>
-                  <p class="stat-label">SaaS Products</p>
-                </div>
-              </div>
-
-              <!-- Stat Card 6 -->
-              <div class="stat-card" data-stat-index="5">
-                <div class="stat-icon stat-icon-6">
-                  <i class="fas fa-graduation-cap"></i>
-                </div>
-                <div class="stat-content">
-                  <div class="stat-number" data-target="5" data-suffix="+">0</div>
-                  <p class="stat-label">Academy Batches</p>
+              <!-- NORMAL: Global Regions -->
+              <div class="stat-card-normal">
+                <div class="stat-inner">
+                  <div class="stat-icon-wrapper">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <div class="stat-main">
+                    <div class="stat-number" data-target="3" data-suffix="+">0</div>
+                    <p class="stat-label">Global Regions</p>
+                  </div>
                 </div>
               </div>
 
-              <!-- Stat Card 7 (Large: Client Retention) -->
-              <div class="stat-card stat-card-large" data-stat-index="6">
-                <div class="stat-icon stat-icon-7">
-                  <i class="fas fa-star"></i>
-                </div>
-                <div class="stat-content">
-                  <div class="stat-number" data-target="90" data-suffix="%">0</div>
-                  <p class="stat-label">Client Retention</p>
+              <!-- WIDE: Clinics & Hospitals -->
+              <div class="stat-card-wide">
+                <div class="stat-inner">
+                  <div class="stat-icon-wrapper">
+                    <i class="fas fa-hospital"></i>
+                  </div>
+                  <div class="stat-main">
+                    <div class="stat-number" data-target="50" data-suffix="+">0</div>
+                    <p class="stat-label">Trusted Clinics & Hospitals</p>
+                  </div>
                 </div>
               </div>
 
-              <!-- Stat Card 8 (Large: Fast Delivery) -->
-              <!-- <div class="stat-card stat-card-large" data-stat-index="7">
-                <div class="stat-icon stat-icon-8">
-                  <i class="fas fa-bolt"></i>
+              <!-- NORMAL: SaaS Products -->
+              <div class="stat-card-normal">
+                <div class="stat-inner">
+                  <div class="stat-icon-wrapper">
+                    <i class="fas fa-cube"></i>
+                  </div>
+                  <div class="stat-main">
+                    <div class="stat-number" data-target="6" data-suffix="+">0</div>
+                    <p class="stat-label">SaaS Products</p>
+                  </div>
                 </div>
-                <div class="stat-content">
-                  <p class="stat-label">Fast Delivery</p>
-                  <p class="stat-description">Rapid turnaround without compromising quality</p>
-                </div>
-              </div> -->
+              </div>
 
-              <!-- Stat Card 9 (Large: Scalable Solutions) -->
-              <!-- <div class="stat-card stat-card-large" data-stat-index="8">
-                <div class="stat-icon stat-icon-9">
-                  <i class="fas fa-infinity"></i>
+              <!-- NORMAL: Academy Batches -->
+              <div class="stat-card-normal">
+                <div class="stat-inner">
+                  <div class="stat-icon-wrapper">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <div class="stat-main">
+                    <div class="stat-number" data-target="5" data-suffix="+">0</div>
+                    <p class="stat-label">Academy Batches</p>
+                  </div>
                 </div>
-                <div class="stat-content">
-                  <p class="stat-label">Scalable Solutions</p>
-                  <p class="stat-description">Grows with your business needs</p>
+              </div>
+
+              <!-- WIDE: Client Retention -->
+              <div class="stat-card-wide accent">
+                <div class="stat-inner">
+                  <div class="stat-icon-wrapper">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="stat-main">
+                    <div class="stat-number" data-target="90" data-suffix="%">0</div>
+                    <p class="stat-label">Client Retention Rate</p>
+                  </div>
                 </div>
-              </div> -->
+              </div>
             </div>
 
-            <!-- 3D Visual Background -->
-            <div class="impact-3d-background" data-speed="-0.08">
+            <!-- Subtle 3D Visual Background -->
+            <div class="impact-3d-background">
               <div class="floating-sphere sphere-1"></div>
-              <div class="floating-sphere sphere-2"></div>
-              <div class="floating-sphere sphere-3"></div>
-              <div class="glow-orb orb-1"></div>
-              <div class="glow-orb orb-2"></div>
-              <div class="particles-container"></div>
             </div>
           </div>
         </div>
@@ -302,10 +354,14 @@
 
     <!-- Services Preview with Tilt Hover -->
     <section class="services-showcase" id="products">
+      <div class="aurora-glow"
+        style="bottom: -10%; right: -10%; background: radial-gradient(circle, var(--neon-cyan), transparent 70%);">
+      </div>
       <div class="container">
+
         <div class="section-tag">✦ Powerful SaaS products designed to solve real-world business challenges. ✦</div>
         <h2 class="section-title-3d">Our <span class="neon-highlight">Products</span></h2>
-        
+
         <div class="services-grid-tilt">
           <div class="product-card-compact" data-tilt data-tilt-max="10">
             <div class="product-img-wrapper">
@@ -316,7 +372,6 @@
               <p>AI-powered clinic & hospital management software for automated workflows.</p>
               <div class="portfolio-btn-group" style="margin-top: 15px;">
                 <a href="product.html" class="btn-card-link">View case study <i class="fas fa-arrow-right"></i></a>
-                <!-- <a href="https://eprescribe.co.in/" class="btn-learn-more" target="_blank" style="padding: 8px 16px; font-size: 0.8rem;">Learn More</a> -->
               </div>
             </div>
           </div>
@@ -329,7 +384,6 @@
               <p>Smart AI parking solution for secure gated societies and corporate campuses.</p>
               <div class="portfolio-btn-group" style="margin-top: 15px;">
                 <a href="product.html" class="btn-card-link">View case study <i class="fas fa-arrow-right"></i></a>
-                <!-- <a href="https://safepark.referindia.in/" class="btn-learn-more" target="_blank" style="padding: 8px 16px; font-size: 0.8rem;">Learn More</a> -->
               </div>
             </div>
           </div>
@@ -342,7 +396,6 @@
               <p>Modern alumni networking software for engagement and community building.</p>
               <div class="portfolio-btn-group" style="margin-top: 15px;">
                 <a href="product.html" class="btn-card-link">View case study <i class="fas fa-arrow-right"></i></a>
-                <!-- <a href="https://alumnisoft.referindia.in/" class="btn-learn-more" target="_blank" style="padding: 8px 16px; font-size: 0.8rem;">Learn More</a> -->
               </div>
             </div>
           </div>
@@ -355,7 +408,6 @@
               <p>Automated attendance and payroll system built for MSMEs and hospitals.</p>
               <div class="portfolio-btn-group" style="margin-top: 15px;">
                 <a href="product.html" class="btn-card-link">View case study <i class="fas fa-arrow-right"></i></a>
-                <!-- <a href="https://attendance.referindia.in/" class="btn-learn-more" target="_blank" style="padding: 8px 16px; font-size: 0.8rem;">Learn More</a> -->
               </div>
             </div>
           </div>
@@ -368,7 +420,6 @@
               <p>Customer relationship management designed for high-touch service businesses.</p>
               <div class="portfolio-btn-group" style="margin-top: 15px;">
                 <a href="product.html" class="btn-card-link">View case study <i class="fas fa-arrow-right"></i></a>
-                <!-- <a href="https://ecrm.referindia.in/" class="btn-learn-more" target="_blank" style="padding: 8px 16px; font-size: 0.8rem;">Learn More</a> -->
               </div>
             </div>
           </div>
@@ -381,7 +432,6 @@
               <p>Smart NFC-based digital business cards for modern professional networking.</p>
               <div class="portfolio-btn-group" style="margin-top: 15px;">
                 <a href="product.html" class="btn-card-link">View case study <i class="fas fa-arrow-right"></i></a>
-                <!-- <a href="https://ecards.referindia.in/" class="btn-learn-more" target="_blank" style="padding: 8px 16px; font-size: 0.8rem;">Learn More</a> -->
               </div>
             </div>
           </div>
@@ -393,9 +443,13 @@
     <div class="logo-cloud">
       <div class="container">
         <div class="cloud-track">
-          <span>✦ Web Development</span> <span>✦ Digital Marketing</span> <span>✦ Graphic Designing</span><span>✦ SEO Optimization</span><span>✦ NFC Smart Cards</span><span>✦ Software Development</span><span>✦ IT Consultancy</span><span>✦ Cloud & DevOps</span>
+          <span>✦ Web Development</span> <span>✦ Digital Marketing</span> <span>✦ Graphic Designing</span><span>✦ SEO
+            Optimization</span><span>✦ NFC Smart Cards</span><span>✦ Software Development</span><span>✦ IT
+            Consultancy</span><span>✦ Cloud & DevOps</span>
           <!-- Duplicate for seamless loop -->
-          <span>✦ Web Development</span> <span>✦ Digital Marketing</span> <span>✦ Graphic Designing</span><span>✦ SEO Optimization</span><span>✦ NFC Smart Cards</span><span>✦ Software Development</span><span>✦ IT Consultancy</span><span>✦ Cloud & DevOps</span>
+          <span>✦ Web Development</span> <span>✦ Digital Marketing</span> <span>✦ Graphic Designing</span><span>✦ SEO
+            Optimization</span><span>✦ NFC Smart Cards</span><span>✦ Software Development</span><span>✦ IT
+            Consultancy</span><span>✦ Cloud & DevOps</span>
         </div>
       </div>
     </div>
@@ -404,7 +458,7 @@
       <div class="container">
         <div class="section-tag">✦ End-to-end services designed to help your business grow, scale, and succeed. ✦</div>
         <h2 class="section-title-3d">Services <span class="neon-highlight">We Offer</span></h2>
-        
+
         <div class="services-grid-tilt">
           <div class="service-tilt-compact" data-tilt data-tilt-max="10">
             <div class="service-icon"><i class="fas fa-code"></i></div>
@@ -477,6 +531,9 @@
         </div>
       </div>
     </section>
+    <div class="map-container" style="display: flex; justify-content: center;" >
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.066993160923!2d72.85375177544823!3d19.36625168189903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7afe98a06ed1f%3A0xf4b276f25529558!2sReferIndia%20IT%20Consultancy!5e0!3m2!1sen!2sin!4v1778670180124!5m2!1sen!2sin" width="80%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </main>
 
   <!-- Glass Footer -->
@@ -485,23 +542,50 @@
       <div class="footer-brand">
         <span><img src="./img/logo.jpg" alt=""></span>
         <p>Empowering businesses with innovative digital services and reliable support worldwide.</p>
-        <div class="social-links"><a href="https://www.instagram.com/referindia"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/referindiaofficial"><i class="fab fa-facebook-f"></i></a><a href="https://www.linkedin.com/company/referindia1/"><i class="fab fa-linkedin-in"></i></a></div>
+        <div class="social-links"><a href="https://www.instagram.com/referindia"><i class="fab fa-instagram"></i></a><a
+            href="https://www.facebook.com/referindiaofficial"><i class="fab fa-facebook-f"></i></a><a
+            href="https://www.linkedin.com/company/referindia1/"><i class="fab fa-linkedin-in"></i></a></div>
       </div>
-      <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="product.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-      <div><h4>Services</h4><ul><li><a href="">Digital Services</a></li><li><a href="#">Marketing / Leads</a></li><li><a href="">Business Solutions</a></li><li><a href="">Consulting / Support</a></li></ul></div>
-      <div><h4>Contact</h4><ul>
-        <li><a href=""><i class="fas fa-map-marker-alt location-icon" style="font-size: 20px;"></i> India <br> 11/1908, Sunteck MAXXWorld, Naigaon East Vasai Link Rd, Tivri,Naigaon East, Mumbai, Maharashtra – 401208</a></li>
-        <li><a href="tel:+91 9702053758">+91 9702053758</a></li>
-        <li><a href="mailto:care@referindia.in">care@referindia.in</a></li> 
-        <li><a href=""><i class="fas fa-map-marker-alt location-icon" style="font-size: 20px;"></i> Middle East <br> Al Karama, Dubai, UAE</a></li>
-        <li><a href="tel:+971 555286876">+971 555286876</a></li>
-        <li><a href="mailto:team@refermiddleeast.ae">team@refermiddleeast.ae</a></li>
-        <li><a href=""><i class="fas fa-map-marker-alt location-icon" style="font-size: 20px;"></i> Europe <br> Tarazona, Zaragoza, Spain</a></li>
-        <li><a href="mailto:contact@refer-europe.com">contact@refer-europe.com</a></li>
-      </ul></div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="product.html">Products</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="">Digital Services</a></li>
+          <li><a href="#">Marketing / Leads</a></li>
+          <li><a href="">Business Solutions</a></li>
+          <li><a href="">Consulting / Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href=""><i class="fas fa-map-marker-alt location-icon" style="font-size: 20px;"></i> India <br>
+             11/1908, Sunteck MAXXWorld, Tivri, Naigaon East, Mumbai - 401208</a></li>
+          <li><a href="tel:+91 9702053758">+91 9702053758</a></li>
+          <li><a href="mailto:care@referindia.in">care@referindia.in</a></li>
+          <li><a href=""><i class="fas fa-map-marker-alt location-icon" style="font-size: 20px;"></i> Middle East <br>
+              Al Karama, Dubai, UAE</a></li>
+          <li><a href="tel:+971 555286876">+971 555286876</a></li>
+          <li><a href="mailto:team@refermiddleeast.ae">team@refermiddleeast.ae</a></li>
+          <li><a href=""><i class="fas fa-map-marker-alt location-icon" style="font-size: 20px;"></i> Europe <br>
+              Tarazona, Zaragoza, Spain</a></li>
+          <li><a href="mailto:contact@refer-europe.com">contact@refer-europe.com</a></li>
+        </ul>
+      </div>
 
     </div>
-    <div class="footer-bottom"><p>© 2026 REFERINDIA GLOBAL — All rights reserved.</p></div>
+    <div class="footer-bottom">
+      <p>© 2026 REFERINDIA GLOBAL — All rights reserved.</p>
+    </div>
   </footer>
 
   <button id="backToTop" class="back-to-top-3d"><i class="fas fa-arrow-up"></i></button>
@@ -509,13 +593,14 @@
   <!-- GSAP & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  
+
   <!-- Load animated icons asynchronously -->
   <script async src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
-  
+
   <!-- Main script with defer for better performance -->
   <script defer src="js/script.min.js"></script>
   <!-- 3D Scroll Animations -->
   <script defer src="js/gsap-animations.js"></script>
 </body>
+
 </html>

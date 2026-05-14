@@ -137,7 +137,7 @@ img {
 /* High contrast mode support */
 @media (prefers-contrast: more) {
   body {
-    --neon-blue: #0080ff;
+    --neon-blue: #3b82f6;
     --neon-purple: #7700ff;
   }
 }

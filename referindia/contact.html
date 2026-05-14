@@ -16,6 +16,9 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/performance.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
 
 <body>
     <div class="cursor-dot"></div>
@@ -75,75 +78,119 @@
             </div>
         </section>
 
-        <section class="office-locations-3d">
-            <div class="container">
-                <div class="section-header-locations">
-                    <h2 class="section-title">Our <span class="highlight-blue">Office Locations</span></h2>
-                    <p class="section-subtitle">Find us across India, Middle East, and Europe</p>
-                </div>
-
-                <div class="locations-grid">
-                    <!-- INDIA OFFICE -->
-                    <div class="location-card">
-                        <div class="location-card-header">
-                            <i class="fas fa-map-marker-alt location-icon"></i>
-                            <h3>India</h3>
-                        </div>
-                        <div class="location-card-content">
-                            <div class="location-address">
-                                <p>11/1908, Sunteck MAXXWorld, Naigaon East Vasai Link Rd, Tivri,<br>Naigaon East,
-                                    Mumbai, Maharashtra – 401208</p>
-                            </div>
-                            <div class="location-contact">
-                                <a href="tel:+971970205375" class="location-link">
-                                    <i class="fas fa-phone"></i> +91 9702053758
-                                </a>
-                            </div>
-                            <div class="location-contact">
-                                <a href="mailto:care@referindia.in" class="location-link">
-                                    <i class="fas fa-envelope"></i> care@referindia.in
-                                </a>
-                            </div>
-                        </div>
+        <section class="office-locations-3d" aria-labelledby="office-locations-heading">
+            <div class="office-locations-inner">
+                <div class="container office-locations-container">
+                    <div class="section-header-locations">
+                        <h2 id="office-locations-heading" class="section-title office-locations-title">
+                            Our <span class="office-locations-title-office">Office</span> <span class="office-locations-title-locations">Locations</span>
+                        </h2>
+                        <p class="section-subtitle office-locations-lead">Find us across India, Middle East, and Europe</p>
                     </div>
 
-                    <!-- MIDDLE EAST OFFICE -->
-                    <div class="location-card">
-                        <div class="location-card-header">
-                            <i class="fas fa-map-marker-alt location-icon"></i>
-                            <h3>Middle East</h3>
+                    <div class="office-locations-map-wrap">
+                        <div class="office-locations-map-frame">
+                            <div id="officeLocationsMap" class="office-locations-map-leaflet" role="region"
+                                aria-label="Interactive map: click a marker to see office address and contact details"></div>
                         </div>
-                        <div class="location-card-content">
-                            <div class="location-address">
-                                <p>Al Karama, Dubai, UAE</p>
-                            </div>
-                            <div class="location-contact">
-                                <a href="tel:+971555286876" class="location-link">
-                                    <i class="fas fa-phone"></i> +971 555286876
-                                </a>
-                            </div>
-                            <div class="location-contact">
-                                <a href="mailto:team@refermiddleeast.ae" class="location-link">
-                                    <i class="fas fa-envelope"></i> team@refermiddleeast.ae
-                                </a>
-                            </div>
-                        </div>
+                        <p class="office-locations-map-hint">Click a marker on the map to open full office details.</p>
                     </div>
 
-                    <!-- EUROPE OFFICE -->
-                    <div class="location-card">
-                        <div class="location-card-header">
-                            <i class="fas fa-map-marker-alt location-icon"></i>
-                            <h3>Europe</h3>
-                        </div>
-                        <div class="location-card-content">
-                            <div class="location-address">
-                                <p>Tarazona, Zaragoza, Spain</p>
+                    <div class="locations-grid locations-grid--office">
+                        <!-- INDIA OFFICE -->
+                        <article class="location-card location-card--glass">
+                            <div class="location-flag-wrap">
+                                <img class="location-flag" src="https://flagcdn.com/w160/in.png" width="80" height="54" alt="India flag">
                             </div>
-                            <div class="location-contact">
-                                <a href="mailto:contact@refer-europe.com" class="location-link">
-                                    <i class="fas fa-envelope"></i> contact@refer-europe.com
-                                </a>
+                            <div class="location-card-header">
+                                <h3>India</h3>
+                            </div>
+                            <div class="location-card-content">
+                                <div class="location-address">
+                                    <p>11/1908, Sunteck MAXXWorld, Naigaon East Vasai Link Rd, Tivri,<br>Naigaon East,
+                                        Mumbai, Maharashtra – 401208</p>
+                                </div>
+                                <div class="location-contact">
+                                    <a href="tel:+919702053758" class="location-link">
+                                        <i class="fas fa-phone"></i> +91 9702053758
+                                    </a>
+                                </div>
+                                <div class="location-contact">
+                                    <a href="mailto:care@referindia.in" class="location-link">
+                                        <i class="fas fa-envelope"></i> care@referindia.in
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- MIDDLE EAST OFFICE -->
+                        <article class="location-card location-card--glass">
+                            <div class="location-flag-wrap">
+                                <img class="location-flag" src="https://flagcdn.com/w160/ae.png" width="80" height="54" alt="United Arab Emirates flag">
+                            </div>
+                            <div class="location-card-header">
+                                <h3>Middle East</h3>
+                            </div>
+                            <div class="location-card-content">
+                                <div class="location-address">
+                                    <p>Al Karama, Dubai, UAE</p>
+                                </div>
+                                <div class="location-contact">
+                                    <a href="tel:+971555286876" class="location-link">
+                                        <i class="fas fa-phone"></i> +971 555286876
+                                    </a>
+                                </div>
+                                <div class="location-contact">
+                                    <a href="mailto:team@refermiddleeast.ae" class="location-link">
+                                        <i class="fas fa-envelope"></i> team@refermiddleeast.ae
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- EUROPE OFFICE -->
+                        <article class="location-card location-card--glass">
+                            <div class="location-flag-wrap">
+                                <img class="location-flag" src="https://flagcdn.com/w160/es.png" width="80" height="54" alt="Spain flag">
+                            </div>
+                            <div class="location-card-header">
+                                <h3>Europe</h3>
+                            </div>
+                            <div class="location-card-content">
+                                <div class="location-address">
+                                    <p>Tarazona, Zaragoza, Spain</p>
+                                </div>
+                                <div class="location-contact">
+                                    <a href="mailto:contact@refer-europe.com" class="location-link">
+                                        <i class="fas fa-envelope"></i> contact@refer-europe.com
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="office-locations-footer-band">
+                        <div class="office-footer-col">
+                            <h4 class="office-footer-region">India</h4>
+                            <div class="office-footer-block">
+                                <p class="office-footer-line"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <strong>Address:</strong> 11/1908, Sunteck MAXXWorld, Naigaon East Vasai Link Rd, Tivri, Naigaon East, Mumbai, Maharashtra – 401208</p>
+                                <p class="office-footer-line"><i class="fas fa-phone" aria-hidden="true"></i> <strong>Phone:</strong> <a href="tel:+919702053758">+91 9702053758</a></p>
+                                <p class="office-footer-line"><i class="fas fa-envelope" aria-hidden="true"></i> <strong>Email:</strong> <a href="mailto:care@referindia.in">care@referindia.in</a></p>
+                            </div>
+                        </div>
+                        <div class="office-footer-col">
+                            <h4 class="office-footer-region">Middle East</h4>
+                            <div class="office-footer-block">
+                                <p class="office-footer-line"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <strong>Address:</strong> Al Karama, Dubai, UAE</p>
+                                <p class="office-footer-line"><i class="fas fa-phone" aria-hidden="true"></i> <strong>Phone:</strong> <a href="tel:+971555286876">+971 555286876</a></p>
+                                <p class="office-footer-line"><i class="fas fa-envelope" aria-hidden="true"></i> <strong>Email:</strong> <a href="mailto:team@refermiddleeast.ae">team@refermiddleeast.ae</a></p>
+                            </div>
+                        </div>
+                        <div class="office-footer-col">
+                            <h4 class="office-footer-region">Europe</h4>
+                            <div class="office-footer-block">
+                                <p class="office-footer-line"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <strong>Address:</strong> Tarazona, Zaragoza, Spain</p>
+                                <p class="office-footer-line"><i class="fas fa-envelope" aria-hidden="true"></i> <strong>Email:</strong> <a href="mailto:contact@refer-europe.com">contact@refer-europe.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -177,6 +224,9 @@
   </footer>
     <button id="backToTop" class="back-to-top-3d"><i class="fas fa-arrow-up"></i></button>
     <script async src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script defer src="js/office-map.js"></script>
     <script defer src="js/script.min.js"></script>
 </body>
 
