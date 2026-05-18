@@ -34,16 +34,66 @@ window.addEventListener('mouseover', (e) => {
     }
 });
 
-// Mobile Menu
+// =====================================================
+// PREMIUM MOBILE MENU — Animated Panel System
+// =====================================================
 const toggle = document.getElementById('mobileToggle');
-const menu = document.getElementById('navMenu');
-if (toggle) toggle.addEventListener('click', () => menu.classList.toggle('active'));
+const menu   = document.getElementById('navMenu');
+let menuIsOpen = false;
+let menuCloseTimer = null;
+
+// Inject overlay backdrop (no HTML changes needed across pages)
+const navOverlay = document.createElement('div');
+navOverlay.className = 'nav-overlay';
+document.body.appendChild(navOverlay);
+
+function openMobileMenu() {
+    if (menuIsOpen) return;
+    menuIsOpen = true;
+    if (menuCloseTimer) { clearTimeout(menuCloseTimer); menuCloseTimer = null; }
+    menu.classList.remove('menu-closing');
+    menu.classList.add('menu-open', 'active');
+    if (toggle) {
+        toggle.classList.add('nav-open');
+        const icon = toggle.querySelector('i');
+        if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+    }
+    navOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+    if (!menuIsOpen) return;
+    menuIsOpen = false;
+    menu.classList.add('menu-closing');
+    menu.classList.remove('menu-open', 'active');
+    if (toggle) {
+        toggle.classList.remove('nav-open');
+        const icon = toggle.querySelector('i');
+        if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+    }
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    menuCloseTimer = setTimeout(() => menu.classList.remove('menu-closing'), 300);
+}
+
+if (toggle) {
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuIsOpen ? closeMobileMenu() : openMobileMenu();
+    });
+}
+navOverlay.addEventListener('click', closeMobileMenu);
+document.addEventListener('click', (e) => {
+    if (menuIsOpen && !menu.contains(e.target) && !toggle?.contains(e.target)) closeMobileMenu();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menuIsOpen) closeMobileMenu(); });
 
 // Navbar Click Animation + Active Link Handling
 const navLinks = document.querySelectorAll('.nav-links a');
 
 const setActiveNavLink = (activeLink) => {
-    navLinks.forEach(link => link.classList.remove('active')); 
+    navLinks.forEach(link => link.classList.remove('active'));
     if (activeLink) activeLink.classList.add('active');
 };
 
@@ -52,9 +102,7 @@ navLinks.forEach(link => {
         link.classList.add('active');
         link.classList.add('nav-link-clicked');
         setTimeout(() => link.classList.remove('nav-link-clicked'), 220);
-        if (menu && menu.classList.contains('active')) {
-            menu.classList.remove('active');
-        }
+        if (menuIsOpen) closeMobileMenu();
     });
 });
 
@@ -284,12 +332,7 @@ if (form) {
     });
 }
 
-// Navbar background on scroll
-window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) navbar.style.background = 'rgba(3,5,10,0.98)';
-    else navbar.style.background = 'rgba(3,5,10,0.85)';
-});
+// Navbar background handled by gsap-animations.js (.scrolled class)
 // =====================================================
 // HERO VIDEO — Robust Initialization
 // =====================================================
