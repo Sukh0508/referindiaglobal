@@ -11,6 +11,10 @@
   <!-- Preload critical resources for faster loading -->
   <link rel="preload" as="image" href="./img/logo.jpg">
   <link rel="preload" as="style" href="css/style.css">
+  <link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
 
   <!-- DNS prefetch for external resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -119,7 +123,7 @@
               <a href="https://easyearn.co.in/"><img src="./img/easy-earn-.png" alt="" loading="lazy" style="height: 55px; width: 150px;"></a>
               <a href="https://merasaitravels.com/"><img src="./img/mera-sai-tours-travels-.png" alt="" style="height: 55px;"></a>
               <a href="https://princerealty.in/"><img src="./img/prince-realty-.jpg" alt="" loading="lazy" style="height: 55px;"></a>
-              <a href="https://drkishorekumarroy.com/"><img src="./img/dr-kishore-kumar-.png" alt="" loading="lazy" style="height: 55px;"></a>
+              <a href="https://drkishorekumarroy.com/"><img src="./img/dr-kishore-kumar-.png" alt="" loading="lazy" style="height: 55px; border-radius: 10px;"></a>
               <a href="https://cancerclinickolkata.com/"><img src="./img/cancer-clinic-kolkata.jpg" alt="" loading="lazy"></a>
               <a href="https://jagannathlegalsolutions.com/"><img src="./img/jagannath-legal-solutions.jpg" alt="" loading="lazy"></a>
               <a href="https://aradhyaclinic/"><img src="./img/aradhya-clinic.png" alt="" loading="lazy"></a>
@@ -301,7 +305,7 @@
                     <i class="fas fa-calendar-check"></i>
                   </div>
                   <div class="stat-main">
-                    <div class="stat-number" data-target="5" data-suffix="+">0</div>
+                    <div class="stat-number" data-target="7" data-suffix="+">0</div>
                     <p class="stat-label">Years of Digital<br>Excellence</p>
                   </div>
                 </div>
@@ -327,7 +331,7 @@
                     <i class="fas fa-hospital"></i>
                   </div>
                   <div class="stat-main">
-                    <div class="stat-number" data-target="50" data-suffix="+">0</div>
+                    <div class="stat-number" data-target="70" data-suffix="+">0</div>
                     <p class="stat-label">Trusted Clinics & Hospitals</p>
                   </div>
                 </div>
@@ -350,19 +354,6 @@
               <div class="stat-card-normal">
                 <div class="stat-inner">
                   <div class="stat-icon-wrapper">
-                    <i class="fas fa-graduation-cap"></i>
-                  </div>
-                  <div class="stat-main">
-                    <div class="stat-number" data-target="5" data-suffix="+">0</div>
-                    <p class="stat-label">Academy Batches</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- WIDE: Client Retention -->
-              <div class="stat-card-wide accent">
-                <div class="stat-inner">
-                  <div class="stat-icon-wrapper">
                     <i class="fas fa-star"></i>
                   </div>
                   <div class="stat-main">
@@ -371,6 +362,8 @@
                   </div>
                 </div>
               </div>
+
+            
             </div>
 
             <!-- Subtle 3D Visual Background -->
@@ -628,6 +621,27 @@
   </footer>
 
   <button id="backToTop" class="back-to-top-3d"><i class="fas fa-arrow-up"></i></button>
+  <!--
+    ROOT CAUSE FIX (HTML):
+    1. Was a <button> with no href/onclick — clicking did absolutely nothing.
+       Converted to <a> so WhatsApp opens natively without JS dependency.
+    2. Icon was ri-whatsapp-line (Remixicon) — changed to fab fa-whatsapp
+       (Font Awesome) which is already loaded via CDN in the <head>.
+    3. Added id="whatsappFloatBtn" for JS targeting if needed later.
+    4. Added aria-label + title for accessibility & tooltip on hover.
+    5. target="_blank" + rel="noopener" are security best-practices for
+       links opening external apps/pages.
+    Phone number taken from the footer contact section (+91 9702053758).
+  -->
+  <a
+    id="whatsappFloatBtn"
+    class="whatsapp-btn"
+    href="https://wa.me/919702053758?text=Hi%20I%20came%20through%20your%20website.%20I%20want%20to%20discuss%20my%20project."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat with us on WhatsApp"
+    title="Chat on WhatsApp"
+  ><i class="fab fa-whatsapp"></i></a>
 
   <!-- GSAP & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

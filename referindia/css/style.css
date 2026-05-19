@@ -2277,7 +2277,7 @@ h4 {
 }
 
 .footer-brand img {
-  height: 56px;
+  height: 40px;
   width: auto;
   border-radius: 12px;
   margin-bottom: 8px;
@@ -2401,6 +2401,63 @@ h4 {
   transform: translateY(-5px) scale(1.1);
   box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
   background: var(--neon-blue);
+}
+/* =====================================================
+   WHATSAPP FLOATING BUTTON
+   ROOT CAUSE FIXES:
+   1. Removed duplicate `border: 2px solid red` — it was a debug artifact
+      immediately overridden by `border: none` on the very next line.
+   2. Changed opacity: 0 → opacity: 1 — button was permanently invisible;
+      the .visible toggling rule was fully commented out with no JS to add
+      the class, so the button was never shown.
+   3. Changed z-index: 3 → 9999 — low z-index buried it under page sections.
+   4. Removed pointer-events: none — button was unclickable even if visible.
+   5. Changed background to #25D366 (official WhatsApp green) — it was
+      inheriting the site's neon-blue which broke the brand recognition.
+   ===================================================== */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 90px;            /* Offset above back-to-top so they don't overlap */
+  right: 30px;
+  background: #25D366;     /* FIX: Official WhatsApp green, not neon-blue */
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;              /* FIX: was 0 — button was permanently hidden */
+  visibility: visible;     /* FIX: was commented out, never toggled */
+  z-index: 9999;           /* FIX: was 3 — buried under overlapping sections */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+  padding: 0;
+  line-height: 1;
+  color: white;
+  font-size: 1.2rem;
+  pointer-events: auto;    /* FIX: was none — button was completely unclickable */
+  animation: whatsapp-pulse 2.5s ease-in-out infinite;
+  text-decoration: none;
+}
+
+/* Subtle pulse ring to draw attention without being intrusive */
+@keyframes whatsapp-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45); }
+  50%       { box-shadow: 0 4px 32px rgba(37, 211, 102, 0.75), 0 0 0 8px rgba(37, 211, 102, 0.12); }
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.65);
+  animation: none; /* Pause pulse on hover for clean UX */
+}
+
+.whatsapp-btn i {
+  font-size: 28px; /* FIX: icon class changed to fab fa-whatsapp in HTML */
+  color: white;
+  pointer-events: none; /* Prevent icon from swallowing click events */
 }
 
 /* =====================================================

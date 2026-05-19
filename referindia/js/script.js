@@ -198,6 +198,38 @@ window.addEventListener('scroll', () => {
 });
 if (backBtn) backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+// =====================================================
+// WHATSAPP FLOATING BUTTON — Defensive JS Safety Net
+// =====================================================
+// ROOT CAUSES THAT WERE FIXED (do not revert these):
+//
+//  CSS (style.css):
+//   - opacity: 0           → 1   (button was permanently invisible)
+//   - pointer-events: none → auto (button was permanently unclickable)
+//   - z-index: 3           → 9999 (button was buried under page sections)
+//   - border: 2px solid red      (debug artifact overridden by border:none)
+//   - .whatsapp-btn.visible {}   (entire reveal rule was commented out with
+//                                 no JS to add the class — dead code)
+//
+//  HTML (index.html):
+//   - <button> → <a href="https://wa.me/..."> (button had no click action)
+//   - ri-whatsapp-line → fab fa-whatsapp (Font Awesome already loaded)
+//
+// This JS block is a SAFETY NET only: if the HTML is ever reverted to a
+// <button> without an href, clicking will still open WhatsApp correctly.
+// =====================================================
+const whatsappBtn = document.getElementById('whatsappFloatBtn');
+if (whatsappBtn) {
+    // Only attach click handler if the element is NOT already an <a> tag
+    // (i.e. the HTML fix is in place — we don't double-fire navigation)
+    if (whatsappBtn.tagName !== 'A') {
+        whatsappBtn.addEventListener('click', () => {
+            window.open('https://wa.me/919702053758', '_blank', 'noopener,noreferrer');
+        });
+    }
+}
+
+
 // ===== PORTFOLIO MODAL SYSTEM (Event Delegation) =====
 const projects = {
   1: {
