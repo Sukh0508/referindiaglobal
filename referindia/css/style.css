@@ -2000,6 +2000,22 @@ h4 {
   margin-bottom: 0;
   margin-top: 4px;
 }
+.btn-primary-3d {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-cyan));
+
+  color: var(--black);
+  padding: 15px 30px;
+  border-radius: 100px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s var(--transition-smooth);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
 
 /* Responsive Grid Adjustments */
 @media (max-width: 1024px) {
